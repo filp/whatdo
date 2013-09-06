@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
 
-  <title>what do</title>
+    <title><%= yield(:page_title) %> | whatdo</title>
 
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header>
-    <h1>whatdo :0</h1>
-  </header>
-  <div>
-    <%= yield %>
-  </div>
-</body>
+    <link rel="stylesheet"
+      href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,400italic">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  </head>
+  <body class="application">
+    <div class="page-container">
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  </body>
 </html>
