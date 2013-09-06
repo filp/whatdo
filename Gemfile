@@ -19,9 +19,12 @@ group :development do
 end
 
 group :development, :test do
+  gem "rspec-rails", "~> 2.0"
+end
+
+group :test do
   gem "selenium-webdriver", "~> 2.3"
   gem "capybara", "~> 2.1"
-  gem "rspec-rails", "~> 2.0"
 end
 
 # Bootstrap 3
@@ -29,4 +32,3 @@ gem "bootstrap-sass", github: "thomas-mcdonald/bootstrap-sass", branch: "3"
 
 # Static pages
 gem "high_voltage", "~> 1.2"
-
