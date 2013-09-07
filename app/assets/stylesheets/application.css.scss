@@ -6,52 +6,51 @@
 /*
  * Basics
  */
-$body-bg: white;
+$body-bg:           white;
 
-$text-color: #121212;
-$text-color-dim: #BDBDBD;
-$text-light-color: white;
+$text-color:        #121212;
+$text-color-dim:    #BDBDBD;
+$text-light-color:  white;
 
-$shadow-soft: rgba(0, 0, 0, .06);
+$shadow-soft:       rgba(0, 0, 0, .06);
 
-$brand-primary: #4707A1;
-$brand-primary-soft: lighten($brand-primary, 40%);
+$brand-primary:     #309166;
+$brand-secondary:   #C1A344;
+$brand-comp:        #361E12;
 
 $font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", helvetica, arial, sans-serif;
 
+$font-size-base:  14px;
+$font-size-hero: $font-size-base * 2;
+
 @import "bootstrap";
+
+/*
+ * Buttons
+ */
+.btn {
+  border: none;
+  border-radius: 0;
+
+  &:hover {
+    border: none;
+  }
+}
 
 /*
  * Styles for the homepage - big, flashy type thing
  * @todo- move these elsewhere!
  */
 .banner {
-  background: image-url("geometry.png");
+  padding: 50px 0;
+  text-align: center;
 
-  h1 {
-    font-size: 48px;
-    color: $brand-primary;
+  .introduction {
     font-weight: 300;
-  }
-
-  header {
-    padding: 80px 0;
-    text-align: center;
+    font-size: $font-size-hero;
   }
 
   .user-callout {
-    // Disable the default margin-top so we get a nice
-    // and even padding on the user callout.
-    h4 { margin-top: 0; }
-
-    background: $body-bg;
-    border: 1px solid $text-color-dim;
-
-    box-shadow: 0 3px 6px $shadow-soft;
-
-    margin-top: 30px;
-    margin-bottom: 20px;
-
-    padding: 20px;
+    margin: 40px 0;
   }
 }
