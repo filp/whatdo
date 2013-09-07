@@ -38,6 +38,18 @@ $font-size-hero: $font-size-base * 2;
 }
 
 /*
+ * Forms 
+ */
+input {
+  @extend .form-control;
+
+  &:focus {
+    box-shadow: none;
+    border-color: $brand-primary;
+  }
+}
+
+/*
  * Styles for the homepage - big, flashy type thing
  * @todo- move these elsewhere!
  */

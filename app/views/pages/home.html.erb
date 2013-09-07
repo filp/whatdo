@@ -9,9 +9,17 @@
         </p>
 
         <div class="user-callout">
-          <button type="button" class="btn btn-lg btn-primary">
-            Get Started <i class="icon-angle-right"></i>
-          </button>
+          <p>
+            <a href="<%= user_signed_in? ? "#" : new_user_registration_path %>" class="btn btn-lg btn-primary">
+              Get Started <i class="icon-angle-right"></i>
+            </a>
+          </p>
+
+          <% unless user_signed_in? %>
+            <p>
+              <small>Already have an account? <a href="<%= new_user_session_path %>">Login here!</a>
+            </p>
+          <% end %>
         </div>
       </div>
     </div>
