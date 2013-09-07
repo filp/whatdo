@@ -40,13 +40,24 @@ $font-size-hero: $font-size-base * 2;
 /*
  * Forms 
  */
-input {
+form {
+  padding: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   @extend .form-control;
 
   &:focus {
     box-shadow: none;
     border-color: $brand-primary;
   }
+}
+
+label {
+  font-weight: 300;
+  color: $text-color;
 }
 
 /*
