@@ -16,6 +16,8 @@ end
 group :development do
   gem "binding_of_caller"
   gem "better_errors"
+  gem "pry", "~> 0.9.1"
+  gem "pry-rails"
 end
 
 group :development, :test do
