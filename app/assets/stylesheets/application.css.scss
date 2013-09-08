@@ -38,6 +38,25 @@ $font-size-hero: $font-size-base * 2;
 }
 
 /*
+ * Pagination
+ */
+.pagination {
+  @extend .well;
+
+  padding: 6px;
+  margin: 3px 0;
+  border-radius: 0;
+  background: $shadow-soft;
+
+  & > li:last-child a, & > li:first-child a {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius:  0;
+    border-top-right-radius:    0;
+    border-top-left-radius:     0;
+  }
+}
+
+/*
  * Forms 
  */
 form {
