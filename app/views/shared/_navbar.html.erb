@@ -3,6 +3,11 @@
     <div class="navbar-header">
       <a href="<%= root_path %>" class="navbar-brand">whatdo</a>
     </div>
+
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Browse Ideas", browse_path %></li>
+    </ul>
+    
     <div class="navbar-user-tools pull-right">
       <p class="navbar-text">
         <% if user_signed_in? %>
