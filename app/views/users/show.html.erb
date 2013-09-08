@@ -15,7 +15,7 @@
   <% if is_current_user?(@user) %>
     <% unless @ideas.any? %>
       <p>
-        You haven't shared any ideas yet! <strong><%= link_to "Get Started!", "#" %></strong>
+        You haven't shared any ideas yet! <strong><%= link_to "Get Started!", new_idea_path %></strong>
       </p>
     <% else %>
       <p>

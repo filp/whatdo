@@ -1,2 +1,13 @@
-<h1>Ideas#show</h1>
-<p>Find me in app/views/ideas/show.html.erb</p>
+<div class="idea-badge">
+  <h2><%= @idea.title %></h2>
+  <p>
+    <small>An idea by <strong><%= link_to @idea.user.name, user_path(@idea.user) %></strong></small>
+  </p>
+</div>
+<div class="idea-body document">
+  <% unless @idea.body.empty? %>
+    <%= @idea.body_html.html_safe %>
+  <% else %>
+    <em>No description given :(</em>
+  <% end %>
+</div>
