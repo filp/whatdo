@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   NAME_FORMAT = /^[A-z][A-z0-9_\ ]+$/
 
+  has_many :ideas
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
