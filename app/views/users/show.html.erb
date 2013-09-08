@@ -1,12 +1,21 @@
 <% content_for :page_title, @user.name %>
 
-<h2>Viewing profile: <strong><%= @user.name %></strong></h2>
+<div class="user-badge">
+  <%= gravatar_for @user.email, size: 160, class: "img-circle" %> 
+  <h2>
+    <%= @user.name %>
+
+    <% if is_current_user?(@user) %>
+      <small class="badge">this is you!</small>
+    <% end %>
+  </h2>
+</div>
 
 <div class="user-ideas-intro">
   <% if is_current_user?(@user) %>
     <% unless @user.ideas.any? %>
       <p>
-        You haven't shared any ideas yet! <strong><a href="#">Get started!</a></strong>
+        You haven't shared any ideas yet! <strong><%= link_to "Get Started!", "#" %></strong>
       </p>
     <% else %>
       <p>
