@@ -1,2 +1,7 @@
-<h1>Ideas#index</h1>
-<p>Find me in app/views/ideas/index.html.erb</p>
+<% content_for :page_title, "Browsing Ideas" %>
+
+<h2>All Ideas</h2>
+
+<ul class="ideas list-unstyled">
+  <%= render @ideas %>
+</ul>
