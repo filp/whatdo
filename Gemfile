@@ -40,4 +40,6 @@ gem "bootstrap-sass", github: "thomas-mcdonald/bootstrap-sass", branch: "3"
 # Static pages
 gem "high_voltage", "~> 1.2"
 
+gem "will_paginate"
+gem "will_paginate-bootstrap"
 gem "devise"
