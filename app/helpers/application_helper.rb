@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include UsersHelper
+
   def gravatar_for(email, options={})
     email_hash = Digest::MD5.hexdigest(email)
     image_url  = "http://www.gravatar.com/avatar/#{email_hash}"

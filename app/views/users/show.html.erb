@@ -1,8 +1,20 @@
 <h2>Viewing profile: <strong><%= @user.name %></strong></h2>
 
-<p>
-  This user has shared <strong><%= pluralize(@user.ideas.size, "idea") %></strong>
-</p>
+<div class="user-ideas-intro">
+  <% if is_current_user?(@user) %>
+    <% unless @user.ideas.any? %>
+      <p>
+        You haven't shared any ideas yet! <strong><a href="#">Get started!</a></strong>
+      </p>
+    <% else %>
+      <p>
+        You have shared <strong><%= pluralize(@user.ideas.size, "idea") %></strong>
+      </p>
+    <% end %>
+  <% else %>
+    <p>This user has shared <strong><%= pluralize(@user.ideas.size, "idea") %></strong></p>
+  <% end %>
+</div>
 
 <ul class="ideas list-unstyled">
   <%= render @user.ideas, include_author: false %>
