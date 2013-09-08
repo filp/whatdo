@@ -1,5 +1,11 @@
+<% include_author = true if local_assigns[:include_author].nil? %>
+
 <li>
-  <h3><%= idea.title %> <small>an idea by <a href="<%= user_path(idea.user) %>"><%= idea.user.name %></small></a></h3>
+  <h3><%= idea.title %>
+    <% if include_author %>
+      <small>an idea by <a href="<%= user_path(idea.user) %>"><%= idea.user.name %></small></a>
+    <% end %>
+  </h3>
   <p>
     <%= idea.body %>
   </p>
