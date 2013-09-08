@@ -3,7 +3,12 @@ Whatdo::Application.routes.draw do
 
   devise_for :users
   resources  :users, only: [:show]
-  resources  :ideas
+  resources  :ideas do
+    member do
+      put :vote
+    end
+  end
 
   match "/browse", to: "ideas#index", via: "get"
+
 end

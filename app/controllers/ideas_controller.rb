@@ -22,6 +22,15 @@ class IdeasController < ApplicationController
       render :new
     end
   end
+  
+  def vote
+    @idea = Idea.find(params[:id])
+
+    # Do not allow a user to vote for his own idea:
+    unless current_user == @idea.user
+      @idea.vote voter: current_user
+    end
+  end
 
 protected
   def idea_params
