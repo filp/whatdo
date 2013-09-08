@@ -1,2 +1,21 @@
-<h1>Ideas#new</h1>
-<p>Find me in app/views/ideas/new.html.erb</p>
+<h1>Share a new Idea:</h1>
+
+<%= form_for(@idea, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "The title of your idea:" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "A longer description for your idea:" %>
+    <%= f.text_area :body %>
+    <small>
+      <%= link_to "Markdown", "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" %>
+      is accepted!
+    </small>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Share this idea!", class: "btn btn-primary" %>
+  </div>
+<% end %>
