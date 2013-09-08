@@ -1,0 +1,9 @@
+<h2>Viewing profile: <strong><%= @user.name %></strong></h2>
+
+<p>
+  This user has shared <strong><%= pluralize(@user.ideas.size, "idea") %></strong>
+</p>
+
+<ul class="ideas list-unstyled">
+  <%= render @user.ideas %>
+</ul>
