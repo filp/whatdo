@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
 
   validate :name_is_acceptable_format
 
+  # Validate that the display name has an acceptable format,
+  # and that it does not contain more than one space in a row.
   def name_is_acceptable_format
-    # Validate that the display name has an acceptable format,
-    # and that it does not contain more than one space in a row.
     unless name.match(NAME_FORMAT) && name["  "].nil?
       errors.add(:name, "is not in an acceptable format")
     end
