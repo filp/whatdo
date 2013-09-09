@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
   # I don't like this too much :|
   before_filter :configure_strong_parameters, if: :devise_controller?
 
+  # After sign-in, redirect to the ideas index
+  def after_sign_in_path_for(resource)
+    browse_path
+  end
+
 protected
   def configure_strong_parameters
     # Allow a Display Name to be provided when registering
