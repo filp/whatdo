@@ -80,6 +80,10 @@ label {
   color: $text-color;
 }
 
+textarea {
+  min-height: 220px;
+}
+
 /*
  * Styles for the homepage - big, flashy type thing
  * @todo- move these elsewhere!
