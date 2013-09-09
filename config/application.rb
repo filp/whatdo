@@ -8,5 +8,6 @@ Bundler.require(:default, Rails.env)
 
 module Whatdo
   class Application < Rails::Application
+    config.autoload_paths += %W{#{Rails.root}/app/presenters}
   end
 end
