@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @ideas = Idea.includes(:user).order("created_at DESC").paginate(page: params[:page], per_page: 10)
+    @ideas = Idea.includes(:user, :votes).order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end
 
   def show
