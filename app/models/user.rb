@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   NAME_FORMAT = /^[A-z][A-z0-9_\ ]+$/
 
   has_many :ideas
+  acts_as_voter
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

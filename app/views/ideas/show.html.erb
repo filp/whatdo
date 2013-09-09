@@ -19,9 +19,13 @@
 
     <% if user_signed_in? %>
       <% unless @idea.user == current_user %>
-        <%= link_to "Vote for this idea!", vote_idea_path(@idea), 
-            method: :put, remote: true, class: "btn btn-primary js-vote-callout" %>
+        <% if current_user.voted_for?(@idea) %>
+          <strong>You already voted for this idea, cheers!</strong>
+        <% else %>
+          <%= link_to "Vote for this idea!", vote_idea_path(@idea), 
+              method: :put, remote: true, class: "btn btn-primary js-vote-callout" %>
         <% end %>
+      <% end %>
     <% else %>
       <%= link_to "Sign In to vote for this idea.", new_user_session_path %>
     <% end %>
