@@ -4,6 +4,11 @@
   <h4>
     <span class="badge badge-info"><%= idea.votes.size %></span>
     <%= link_to idea.title, idea_path(idea) %>
+
+    <% if idea.created_at > 5.minutes.ago %>
+      <span class="label label-info">new!</span>
+    <% end %>
+
     <% if include_author %>
       <small>an idea by <a href="<%= user_path(idea.user) %>"><%= idea.user.name %></small></a>
     <% end %>
