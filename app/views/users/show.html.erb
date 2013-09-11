@@ -1,43 +1,37 @@
 <% content_for :page_title, @user.name %>
 
-<div class="user-badge">
-  <%= link_to is_current_user?(@user) ? "http://gravatar.com/emails" : user_path(@user) do %>
-    <%= gravatar_for @user, size: 160 %> 
-  <% end %>
-  
-  <h2>
-    <%= @user.name %>
+<div class="row">
 
-    <% if is_current_user?(@user) %>
-      <small class="badge">this is you!</small>
-    <% end %>
-  </h2>
-</div>
+  <div class="col-sm-3">
+    <div class="user-badge">
+      <div class="user-avatar">
+        <%= link_to is_current_user?(@user) ? "http://gravatar.com/emails" : user_path(@user) do %>
+          <%= gravatar_for @user, size: 160, class: "img-circle" %> 
+        <% end %>
+      </div>
+      <h2 class="user-name hero">
+        <%= @user.name %>
+      </h2>
 
-<div class="user-ideas-intro">
-  <% if is_current_user?(@user) %>
-    <% unless @ideas.any? %>
-      <p>
-        You haven't shared any ideas yet! <strong><%= link_to "Get Started!", new_idea_path %></strong>
-      </p>
-    <% else %>
-      <p>
-        You have shared <strong><%= pluralize(@ideas.size, "idea") %></strong>
-      </p>
-    <% end %>
-  <% else %>
-    <p>This user has shared <strong><%= pluralize(@ideas.size, "idea") %></strong></p>
-  <% end %>
-</div>
-
-<% if @ideas.any? %>
-  <div class="well">
-    <ul class="ideas list-unstyled">
-      <%= render @ideas, include_author: false %>
-    </ul>
-
-    <p>
-      <small><%= link_to "View all ideas shared by #{@user.name}", "#" %></small>
-    </p>
+      <div class="user-meta">
+        Member since <%= @user.created_at.to_s(:month_year) %>
+      </div>
+    </div>
   </div>
-<% end %>
+
+  <div class="col-sm-9">
+    <% if @ideas.any? %>
+      <div class="user-ideas">
+        <%= render @ideas, include_author: false %>
+
+        <div class="user-ideas-callout">
+          <p>
+            <small><%= link_to "View all ideas shared by #{@user.name}", "#" %></small>
+          </p>
+        </div>
+      </div>
+    <% else %>
+      <small>This user hasn't shared any ideas.</small>
+    <% end %>
+  </div>
+</div>

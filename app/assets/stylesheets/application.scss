@@ -17,6 +17,7 @@ $body-bg:           #242E2F;
 $text-dim-color:    #BDBDBD;
 $text-light-color:  white;
 $text-color:        $text-light-color;
+$text-dark-color:   #0E0E0E;
 
 $shadow-soft-color: rgba(0, 0, 0, .1);
 $shadow-hard-color: rgba(0, 0, 0, .3);
@@ -119,7 +120,6 @@ a {
   }
 }
 
-
 /*
  * Forms 
  */
@@ -168,6 +168,63 @@ textarea {
 /*
  * Ideas
  */
+.idea-badge {
+  background:    lighten($body-bg, 10%);
+  margin-bottom: 5px;
+  padding:       5px 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .idea-votes {
+    background: $shadow-soft-color;
+    width:  40px;
+    height: 40px;
+    margin-left: -10px;
+
+    text-align: center;
+    padding-top: 10px;
+    font-size: $font-size-base * .8;
+    font-weight: bold;
+  }
+
+  // Make sure the details (title, etc) are always at least
+  // as tall as the votes count
+  .idea-details {
+    min-height: 40px;
+    margin-left: 40px;
+  }
+
+  .idea-title {
+    font-weight: 300;
+    margin: 5px 0;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+  }
+
+  .idea-meta {
+    font-size: $font-size-base * .8;
+
+    // Remove the padding-left on the first element of
+    // the inlined list, so it aligns properly with the
+    // idea's title:
+    .list-inline > li:first-child {
+      padding-left: 0;
+    }
+
+    .idea-share-date {
+      color: $text-dim-color;
+    }
+  }
+}
+
 .document {
   padding: 20px;
   border: 1px solid $text-dim-color;
@@ -180,10 +237,27 @@ textarea {
 /*
  * Users
  */
-.user-name {
-  color: $brand-secondary;
-}
+.user-badge {
+  // The user badge is the information snippet displayed in
+  // a user's profile.
+  border-right: 1px solid $shadow-soft-color;
+  padding: 30px 10px;
 
+  .user-name {
+    font-size: $font-size-base * 2.2;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .user-avatar, .user-meta {
+    text-align: center;
+  }
+
+  .user-meta {
+    font-size: $font-size-base * .8;
+    color: $text-dim-color;
+  }
+}
 /*
  * Homepage
  */

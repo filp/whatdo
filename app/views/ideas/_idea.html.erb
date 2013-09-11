@@ -1,16 +1,22 @@
 <% include_author = true if local_assigns[:include_author].nil? %>
 
-<li>
-  <h4>
-    <span class="badge badge-info"><%= idea.votes.size %></span>
-    <%= link_to idea.title, idea_path(idea) %>
+<div class="idea-badge">
+  <div class="idea-votes pull-left">
+    <span class="js-idea-votes-count" data-idea-id="<%= idea.id %>"><%= idea.votes.size %></span>
+  </div>
+  <div class="idea-details">
+    <h4 class="idea-title"><%= link_to idea.title, idea %></h4>
+    <div class="idea-meta">
+      <ul class="list-inline">
+        <li class="idea-share-date">
+          Shared 
+            <% if include_author %>
+              by <%= link_to idea.user.name, idea.user %>,
+            <% end %>
 
-    <% if idea.created_at > 5.minutes.ago %>
-      <span class="label label-info">new!</span>
-    <% end %>
-
-    <% if include_author %>
-      <small>an idea by <a href="<%= user_path(idea.user) %>"><%= idea.user.name %></small></a>
-    <% end %>
-  </h4>
-</li>
+            <%= distance_of_time_in_words_to_now(idea.created_at) %> ago
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
