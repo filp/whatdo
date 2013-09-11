@@ -1,0 +1,19 @@
+@import "whatdo";
+
+/*
+ * Styles for the homepage - big, flashy type thing
+ * @todo- move these elsewhere!
+ */
+.banner {
+  padding: 50px 0;
+  text-align: center;
+
+  .introduction {
+    font-weight: 300;
+    font-size: $font-size-hero;
+  }
+
+  .user-callout {
+    margin: 40px 0;
+  }
+}
