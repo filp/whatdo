@@ -1,17 +1,12 @@
 module ApplicationHelper
   include UsersHelper
 
-  def gravatar_for(email, options={})
-    email_hash = Digest::MD5.hexdigest(email)
-    image_url  = "http://www.gravatar.com/avatar/#{email_hash}"
-
-    if options[:size]
-      image_url << "?s=#{options[:size]}"
-    end
-
-    render partial: "shared/gravatar", locals: {
-      additional_classes: options[:class],
-      image_url: image_url
-    }
+  # Wrapper around gravatar_image_tag with some more
+  # sensible defaults for the application:
+  def gravatar_for(user, options={})
+    gravatar_image_tag(
+      user.email, alt: user.name, class: "gravatar",
+      gravatar: { size: options[:size] || 32, default: :identicon }
+    )
   end
 end

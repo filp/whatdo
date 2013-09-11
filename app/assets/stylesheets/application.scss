@@ -7,16 +7,16 @@
  * Variables and overrides
  */
 
-$body-bg:           #151515;
+$body-bg:           #242E2F;
 
 $text-color-dim:    #BDBDBD;
 $text-light-color:  white;
 $text-color:        $text-light-color;
 
-$shadow-soft:       rgba(0, 0, 0, .06);
+$shadow-soft:       rgba(0, 0, 0, .1);
 
 $brand-primary:     #CC2321;
-$brand-secondary:   #E7E43D;
+$brand-secondary:   #17C1BF;
 $brand-comp:        black;
 
 $font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", helvetica, arial, sans-serif;
@@ -27,9 +27,21 @@ $font-size-hero: $font-size-base * 2;
 @import "bootstrap";
 
 a {
+  color: lighten($brand-secondary, 20%);
   &:hover {
     text-decoration: none;
+    color: $brand-secondary;
   }
+}
+
+/*
+ * Misc.
+ */
+.well {
+  background: transparent;
+  border-radius: none;
+  border: none;
+  padding: 0;
 }
 
 /*
@@ -49,16 +61,33 @@ a {
 .pagination {
   @extend .well;
 
-  padding: 6px;
-  margin: 3px 0;
+  margin: 0;
+  padding: 5px;
   border-radius: 0;
+  border: 0;
+
   background: $shadow-soft;
+  font-size: $font-size-base * .8;
 
   & > li:last-child a, & > li:first-child a {
     border-bottom-right-radius: 0;
     border-bottom-left-radius:  0;
     border-top-right-radius:    0;
     border-top-left-radius:     0;
+  }
+
+  // wtf
+  li a, li a span,
+  li a span:hover, li a:hover,
+  li.disabled a {
+    background: none;
+    border: none;
+
+    color: $text-color-dim;
+
+    &:hover {
+      color: $brand-secondary;
+    }
   }
 }
 
@@ -100,7 +129,7 @@ textarea {
   a {
     color: $text-color-dim;
 
-    &:hover { color: $brand-primary; }
+    &:hover { color: $brand-secondary; }
   }
 
   .branding {
@@ -136,7 +165,7 @@ textarea {
   background-color: $brand-primary;
 
   .introduction-banner-content {
-    padding: 60px 40px;
+    padding: 120px 40px 40px 40px;
     background: $shadow-soft;
   }
 
@@ -146,18 +175,19 @@ textarea {
   }
 
   .user-callout {
-    $border-color: darken($brand-primary, 6%);
-    $highlight-color: lighten($brand-primary, 6%);
+    $border-color: darken($brand-primary, 12%);
+    $highlight-color: lighten($body-bg, 6%);
 
     border-top: 1px dotted $border-color;
     margin-top: 20px;
     padding-top: 20px;
 
     .btn {
+      background: $body-bg;
+
       font-weight: 300;
       font-size: $font-size-base * 1.2;
 
-      border: 1px solid $border-color;
       box-shadow: 0 3px 6px $shadow-soft,
                   inset 0 1px 0 $highlight-color;
 
