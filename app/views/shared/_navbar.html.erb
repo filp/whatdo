@@ -1,23 +1,21 @@
-<nav class="navbar navbar-static-top navbar-default" role="navigation">
+<header role="banner" class="primary-header">
   <div class="container">
-    <div class="navbar-header">
-      <a href="<%= root_path %>" class="navbar-brand">whatdo</a>
-    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <h1 class="branding header-branding">
+          <%= link_to "whatdo", root_path %>
+        </h1>
+      </div>
+      <div class="col-sm-9">
+        <nav class="primary-navigation pull-right">
+          <ul class="list-inline">
+            <li><strong><%= link_to "Browse Ideas", browse_path %></strong></li>
+            <li><strong><%= link_to "Share an Idea", new_idea_path %></strong></li>
 
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Share an idea", new_idea_path %></li>
-      <li><%= link_to "Browse Ideas", browse_path %></li>
-    </ul>
-    
-    <div class="navbar-user-tools pull-right">
-      <p class="navbar-text">
-        <% if user_signed_in? %>
-          Hi there, <a href="<%= user_path(current_user) %>" class="user-name"><%= current_user.name %></a> | <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign In", new_user_session_path %> |
-          New user? <%= link_to "Sign Up!", new_user_registration_path %>
-        <% end %>
-      </p>
+            <%= render "shared/user_links" %>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
-</nav>
+</header>

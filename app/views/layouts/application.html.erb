@@ -15,9 +15,14 @@
   <body class="application">
     <%= render "shared/navbar" %>
     
-    <div class="container">
+    <% if content_for?(:dont_wrap_content) %>
       <%= yield %>
-    </div>
+    <% else %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <% end %>
+    
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>
 </html>

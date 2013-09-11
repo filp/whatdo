@@ -2,5 +2,171 @@
  *= require_self
  *= require_tree .
  */
-@import "whatdo";
-@import "components";
+
+/*
+ * Variables and overrides
+ */
+
+$body-bg:           #151515;
+
+$text-color-dim:    #BDBDBD;
+$text-light-color:  white;
+$text-color:        $text-light-color;
+
+$shadow-soft:       rgba(0, 0, 0, .06);
+
+$brand-primary:     #CC2321;
+$brand-secondary:   #E7E43D;
+$brand-comp:        black;
+
+$font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", helvetica, arial, sans-serif;
+
+$font-size-base:  16px;
+$font-size-hero: $font-size-base * 2;
+
+@import "bootstrap";
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/*
+ * Utilities
+ */
+.highlight {
+  color: $brand-secondary;
+  font-weight: bold;
+
+  &:hover {
+    color: $text-light-color;
+  }
+}
+
+/*
+ * Buttons
+ */
+.btn {
+  border: none;
+
+  &:hover {
+    border: none;
+  }
+}
+
+/*
+ * Pagination
+ */
+.pagination {
+  @extend .well;
+
+  padding: 6px;
+  margin: 3px 0;
+  border-radius: 0;
+  background: $shadow-soft;
+
+  & > li:last-child a, & > li:first-child a {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius:  0;
+    border-top-right-radius:    0;
+    border-top-left-radius:     0;
+  }
+}
+
+/*
+ * Forms 
+ */
+form {
+  padding: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  @extend .form-control;
+
+  &:focus {
+    box-shadow: none;
+    border-color: $brand-primary;
+  }
+}
+
+label {
+  font-weight: 300;
+  color: $text-color;
+}
+
+textarea {
+  min-height: 220px;
+}
+
+/*
+ * Top banner and navigation:
+ */
+
+.primary-header {
+  padding: 20px;
+  background: $brand-comp;
+  color: $text-light-color;
+
+  .branding {
+    margin: 0;
+    font-size: $font-size-base * 1.5;
+    font-weight: 300;
+
+    a { color: inherit; }
+  }
+}
+
+/*
+ * Ideas
+ */
+.document {
+  padding: 20px;
+  border: 1px solid $text-color-dim;
+  margin: 20px 0;
+}
+
+/*
+ * Users
+ */
+.user-name {
+  color: $brand-secondary;
+}
+
+/*
+ * Homepage
+ */
+.introduction-banner {
+  background-color: $brand-primary;
+  padding: 40px;
+
+  .introduction {
+    font-size: $font-size-base * 2;
+    font-weight: 300;
+  }
+
+  .user-callout {
+    $border-color: darken($brand-primary, 6%);
+    $highlight-color: lighten($brand-primary, 6%);
+
+    border-top: 1px dotted $border-color;
+    margin-top: 20px;
+    padding-top: 20px;
+
+    .btn {
+      font-weight: 300;
+      font-size: $font-size-base * 1.2;
+
+      border: 1px solid $border-color;
+      box-shadow: 0 3px 6px $shadow-soft,
+                  inset 0 1px 0 $highlight-color;
+
+      &:hover {
+        background-color: $highlight-color;
+      }
+    }
+  }
+}

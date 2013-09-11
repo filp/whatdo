@@ -1,27 +1,21 @@
 <% content_for :page_title, "Hi there!" %>
+<% provide :dont_wrap_content, true %>
 
-<section class="banner" role="banner">
-  <header class="container">
+<section class="introduction-banner">
+  <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
+      <div class="col-sm-12">
         <p class="introduction">
-          A place where you can share and find ideas for your next big (or small) project.
+          Share your ideas, and bla bla boopety
+          doo, amigo!
         </p>
 
         <div class="user-callout">
-          <p>
-            <a href="<%= user_signed_in? ? browse_path : new_user_registration_path %>" class="btn btn-lg btn-primary">
-              Get Started <i class="icon-angle-right"></i>
-            </a>
-          </p>
-
-          <% unless user_signed_in? %>
-            <p>
-              <small>Already have an account? <a href="<%= new_user_session_path %>">Sign In!</a>
-            </p>
+          <%= link_to browse_path, class: "btn btn-primary" do %>
+            Find Ideas <i class="icon-angle-right"></i>
           <% end %>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 </section>
