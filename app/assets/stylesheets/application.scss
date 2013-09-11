@@ -7,41 +7,105 @@
  * Variables and overrides
  */
 
-$body-bg:           #242E2F;
-
-$text-color-dim:    #BDBDBD;
-$text-light-color:  white;
-$text-color:        $text-light-color;
-
-$shadow-soft:       rgba(0, 0, 0, .1);
-
+// Base and helper colors:
 $brand-primary:     #CC2321;
 $brand-secondary:   #17C1BF;
 $brand-comp:        black;
 
-$font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", helvetica, arial, sans-serif;
+$body-bg:           #242E2F;
 
-$font-size-base:  16px;
-$font-size-hero: $font-size-base * 2;
+$text-dim-color:    #BDBDBD;
+$text-light-color:  white;
+$text-color:        $text-light-color;
+
+$shadow-soft-color: rgba(0, 0, 0, .1);
+$shadow-hard-color: rgba(0, 0, 0, .3);
+
+$link-color:        $brand-secondary;
+$link-hover-color:  lighten($link-color, 20%);
+
+// Typography:
+$font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", helvetica, arial, sans-serif;
+$font-size-base:         16px;
+
+// Navbar:
+$navbar-default-bg:                  $body-bg;
+$navbar-border-radius:               0;
+$navbar-default-link-color:          $text-dim-color;
+$navbar-default-link-hover-color:    $link-hover-color;
+$navbar-default-link-active-color:   $navbar-default-link-hover-color;
+$navbar-default-link-disabled-color: $text-dim-color;
+$navbar-default-brand-hover-color:   $navbar-default-link-hover-color;
+$navbar-default-link-active-bg:      darken($body-bg, 1%);
+
+// Navbar toggle:
+$navbar-default-toggle-hover-bg:     $shadow-soft-color;
+$navbar-default-toggle-border-color: lighten($body-bg, 10%);
+
+// Dropdown:
+$dropdown-bg:               darken($navbar-default-link-active-bg, 6%);
+$dropdown-border:           transparent;
+$dropdown-link-color:       $navbar-default-link-color;
+$dropdown-link-hover-color: $navbar-default-link-hover-color;
+$dropdown-link-hover-bg:    transparent;
+
+// Pagination:
+$pagination-bg:             transparent;
+$pagination-border:         none;
+$pagination-active-bg:      $brand-primary;
+$pagination-active-color:   $text-color;
+$pagination-disabled-color: $text-dim-color;
+
+// Panels & wells:
+$panel-bg:                  $navbar-default-link-active-bg;
+$panel-footer-bg:           darken($panel-bg, 1%);
+$panel-inner-border:        none;
+$panel-border-radius:       0;
 
 @import "bootstrap";
 
 a {
-  color: lighten($brand-secondary, 20%);
+  color: $link-color;
   &:hover {
     text-decoration: none;
-    color: $brand-secondary;
+    color: $link-hover-color;
   }
 }
 
 /*
- * Misc.
+ * Misc. Bootstrap tweaks
  */
+.pagination {
+  & > li > a:hover, & > li > a:focus, 
+  & > li > span:hover, & > li > span:focus {
+    background: $shadow-soft-color;
+  }
+}
+
 .well {
-  background: transparent;
-  border-radius: none;
-  border: none;
-  padding: 0;
+  background:    $panel-bg;
+  border-radius: $panel-border-radius;
+  border:        $panel-inner-border;
+}
+
+.dropdown-menu {
+  text-align: right;
+  min-width: 100px;
+  box-shadow: none;
+
+  border-top: 1px solid $shadow-soft-color;
+}
+
+/*
+ * Labels, badges, tags, etc
+ */
+
+.badge {
+  background-color: $brand-primary;
+
+  text-shadow: 0 1px 0 $shadow-hard-color;
+  font-size: $font-size-base * .8;
+  font-weight: bold;
 }
 
 /*
@@ -55,41 +119,6 @@ a {
   }
 }
 
-/*
- * Pagination
- */
-.pagination {
-  @extend .well;
-
-  margin: 0;
-  padding: 5px;
-  border-radius: 0;
-  border: 0;
-
-  background: $shadow-soft;
-  font-size: $font-size-base * .8;
-
-  & > li:last-child a, & > li:first-child a {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius:  0;
-    border-top-right-radius:    0;
-    border-top-left-radius:     0;
-  }
-
-  // wtf
-  li a, li a span,
-  li a span:hover, li a:hover,
-  li.disabled a {
-    background: none;
-    border: none;
-
-    color: $text-color-dim;
-
-    &:hover {
-      color: $brand-secondary;
-    }
-  }
-}
 
 /*
  * Forms 
@@ -124,18 +153,15 @@ textarea {
  */
 
 .primary-header {
-  padding: 30px;
+  padding-top: 30px;
 
-  a {
-    color: $text-color-dim;
-
-    &:hover { color: $brand-secondary; }
+  .navbar {
+    border: none;
   }
 
-  .branding {
-    margin: 0;
-    font-size: $font-size-base * 1.5;
-    font-weight: 300;  
+  .navbar-brand {
+    font-weight: 300;
+    font-size: $font-size-base * 2;
   }
 }
 
@@ -144,7 +170,7 @@ textarea {
  */
 .document {
   padding: 20px;
-  border: 1px solid $text-color-dim;
+  border: 1px solid $text-dim-color;
   margin: 20px 0;
 
   background: white;
@@ -166,7 +192,7 @@ textarea {
 
   .introduction-banner-content {
     padding: 120px 40px 40px 40px;
-    background: $shadow-soft;
+    background: $shadow-soft-color;
   }
 
   .introduction {
@@ -188,7 +214,7 @@ textarea {
       font-weight: 300;
       font-size: $font-size-base * 1.2;
 
-      box-shadow: 0 3px 6px $shadow-soft,
+      box-shadow: 0 3px 6px $shadow-soft-color,
                   inset 0 1px 0 $highlight-color;
 
       &:hover {
