@@ -11,6 +11,7 @@
     <link rel="stylesheet"
       href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </head>
   <body class="application">
     <%= render "shared/navbar" %>
@@ -23,6 +24,5 @@
       </div>
     <% end %>
     
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>
 </html>
