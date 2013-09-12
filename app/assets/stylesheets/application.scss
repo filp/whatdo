@@ -8,8 +8,8 @@
  */
 
 // Base and helper colors:
-$brand-primary:     #CC2321;
-$brand-secondary:   #17C1BF;
+$brand-primary:     #17C1BF;
+$brand-secondary:   #D9072D;
 $brand-comp:        black;
 
 $body-bg:           #242E2F;
@@ -22,7 +22,7 @@ $text-dark-color:   #0E0E0E;
 $shadow-soft-color: rgba(0, 0, 0, .1);
 $shadow-hard-color: rgba(0, 0, 0, .3);
 
-$link-color:        $brand-secondary;
+$link-color:        $brand-primary;
 $link-hover-color:  lighten($link-color, 20%);
 
 // Typography:
