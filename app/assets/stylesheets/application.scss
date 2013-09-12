@@ -63,6 +63,9 @@ $panel-footer-bg:           darken($panel-bg, 1%);
 $panel-inner-border:        none;
 $panel-border-radius:       0;
 
+// Forms:
+$input-color:               $text-dark-color;
+
 @import "bootstrap";
 
 a {
@@ -154,34 +157,6 @@ a {
   &:hover {
     border: none;
   }
-}
-
-/*
- * Forms 
- */
-form {
-  padding: 20px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-  @extend .form-control;
-
-  &:focus {
-    box-shadow: none;
-    border-color: $brand-primary;
-  }
-}
-
-label {
-  font-weight: 300;
-  color: $text-color;
-}
-
-textarea {
-  min-height: 220px;
 }
 
 /*
