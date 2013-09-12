@@ -169,7 +169,10 @@ textarea {
  * Ideas
  */
 .idea-badge {
+  $badge-height: 65px;
+
   background:    lighten($body-bg, 10%);
+  min-height:    $badge-height;
   margin-bottom: 5px;
   padding:       5px 15px;
 
@@ -181,7 +184,7 @@ textarea {
     background: $shadow-soft-color;
     width:  40px;
     height: 40px;
-    margin-left: -10px;
+    margin-top:  8px;
 
     text-align: center;
     padding-top: 10px;
@@ -193,7 +196,7 @@ textarea {
   // as tall as the votes count
   .idea-details {
     min-height: 40px;
-    margin-left: 40px;
+    margin-left: 55px;
   }
 
   .idea-title {
