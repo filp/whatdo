@@ -74,6 +74,42 @@ a {
 }
 
 /*
+ * "Report an issue" callout for the alpha period
+ */
+.meta-report-issues a{
+  z-index: 9999;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+
+  font-size: $font-size-base * .9;
+  background: darken($body-bg, 2%);
+  border: 1px solid $shadow-soft-color;
+  padding: 10px 60px;
+  color: $text-dim-color;
+
+  position: absolute;
+  top: 33px;
+  left: -63px;
+
+  @media(max-width: $container-desktop) {
+    // If we're on a smaller display, do some stuff the other way around :|
+    position: static;
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+
+    display: block;
+    padding: 10px;
+    text-align: center;
+
+    left: 0;
+    top: 0;
+  }
+}
+
+/*
  * Misc. Bootstrap tweaks
  */
 .pagination {
