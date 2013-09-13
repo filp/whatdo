@@ -2,7 +2,7 @@ class Idea < ActiveRecord::Base
   belongs_to :user
   acts_as_votable
 
-  validates :title, presence: true, length: { minimum: 6, maximum: 128 }
+  validates :title, presence: true, length: { minimum: 3, maximum: 128 }
   validates :body, length: { maximum: 12000 }
 
   # @return [Array] A list of Users that voted for this idea
