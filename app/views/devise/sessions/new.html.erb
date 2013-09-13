@@ -1,15 +1,29 @@
-<h2>Sign in</h2>
+<% content_for :page_title, "Sign In" %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+<div class="row">
+  <div class="col-md-5">
+    <div class="controls-panel user-signin-panel">
+      <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div>
+          <h2>Welcome back!</h2>
+          <p>
+            <small class="text-muted">Sign in to your <strong>whatdo</strong> account:</small>
+          </p>
+        </div>
+
+        <div class="form-inputs">
+          <%= f.input :email, :required => true, :autofocus => true %>
+          <%= f.input :password, :required => true %>
+          <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Sign in", class: "btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
+  <div class="col-md-7">
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -8,40 +8,47 @@
  */
 
 // Base and helper colors:
-$brand-primary:     #17C1BF;
-$brand-secondary:   #D9072D;
-$brand-comp:        black;
+$brand-primary-color:   #17C1BF;
+$brand-secondary-color: #D9072D;
 
-$body-bg:           #242E2F;
+// bootstrap compat:
+$brand-primary:   $brand-primary-color;
+$brand-secondary: $brand-secondary-color;
 
-$text-dim-color:    #BDBDBD;
-$text-light-color:  white;
-$text-color:        $text-light-color;
-$text-dark-color:   #0E0E0E;
+// Brand color variations:
+$brand-primary-soft-color: hsl(hue($brand-primary-color), 50%, 30%);
 
-$shadow-soft-color: rgba(0, 0, 0, .1);
-$shadow-hard-color: rgba(0, 0, 0, .3);
+$body-bg-color:         #242E2F;
+$body-bg:               $body-bg-color; // bootstrap compat.
 
-$link-color:        $brand-primary;
-$link-hover-color:  lighten($link-color, 20%);
+$text-dim-color:        #BDBDBD;
+$text-light-color:      white;
+$text-color:            $text-light-color;
+$text-dark-color:       #0E0E0E;
+
+$shadow-soft-color:   rgba(0, 0, 0, .1);
+$shadow-hard-color:   rgba(0, 0, 0, .3);
+
+$link-color:          $brand-primary-color;
+$link-hover-color:    lighten($link-color, 20%);
 
 // Typography:
 $font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", helvetica, arial, sans-serif;
 $font-size-base:         16px;
 
 // Navbar:
-$navbar-default-bg:                  $body-bg;
+$navbar-default-bg:                  $body-bg-color;
 $navbar-border-radius:               0;
 $navbar-default-link-color:          $text-dim-color;
 $navbar-default-link-hover-color:    $link-hover-color;
 $navbar-default-link-active-color:   $navbar-default-link-hover-color;
 $navbar-default-link-disabled-color: $text-dim-color;
 $navbar-default-brand-hover-color:   $navbar-default-link-hover-color;
-$navbar-default-link-active-bg:      darken($body-bg, 1%);
+$navbar-default-link-active-bg:      darken($body-bg-color, 1%);
 
 // Navbar toggle:
 $navbar-default-toggle-hover-bg:     $shadow-soft-color;
-$navbar-default-toggle-border-color: lighten($body-bg, 10%);
+$navbar-default-toggle-border-color: lighten($body-bg-color, 10%);
 
 // Dropdown:
 $dropdown-bg:               darken($navbar-default-link-active-bg, 6%);
@@ -53,7 +60,7 @@ $dropdown-link-hover-bg:    transparent;
 // Pagination:
 $pagination-bg:             transparent;
 $pagination-border:         none;
-$pagination-active-bg:      $brand-primary;
+$pagination-active-bg:      $brand-primary-color;
 $pagination-active-color:   $text-color;
 $pagination-disabled-color: $text-dim-color;
 
@@ -64,7 +71,12 @@ $panel-inner-border:        none;
 $panel-border-radius:       0;
 
 // Forms:
-$input-color:               $text-dark-color;
+$input-color:               $text-light-color;
+$input-color-placeholder:   $text-dim-color;
+$input-bg:                  darken($body-bg-color, 6%);
+$input-border:              transparent;
+$input-border-radius:       0;
+$input-bg-disabled:         $body-bg-color;
 
 @import "bootstrap";
 
@@ -87,7 +99,7 @@ a {
   transform: rotate(-45deg);
 
   font-size: $font-size-base * .9;
-  background: darken($body-bg, 2%);
+  background: darken($body-bg-color, 2%);
   border: 1px solid $shadow-soft-color;
   padding: 10px 60px;
   color: $text-dim-color;
@@ -141,7 +153,7 @@ a {
  */
 
 .badge {
-  background-color: $brand-primary;
+  background-color: $brand-primary-color;
 
   text-shadow: 0 1px 0 $shadow-hard-color;
   font-size: $font-size-base * .8;
@@ -152,11 +164,56 @@ a {
  * Buttons
  */
 .btn {
-  border: none;
+  border:  none;
+  outline: none;
+  text-shadow: 1px 1px 0 $shadow-soft-color;
 
   &:hover {
     border: none;
   }
+
+  &.btn-primary {
+    background: $brand-primary-color;
+  }
+}
+
+/*
+ * Forms
+ */
+form {
+  margin: 20px 0;
+}
+
+.form-control {
+  outline: none;
+
+  -webkit-box-shadow: inset 0 1px 2px $shadow-soft-color;
+
+  &:active, &:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    border-color: $brand-primary-soft-color;
+  }
+}
+
+label {
+  font-weight: 200;
+  font-size: $font-size-base * .9;
+
+  // abbr will usually be the little "required" indicator
+  abbr {
+    color: $brand-primary-color;
+  }
+}
+
+.form-actions {
+  @extend .well;
+  @extend .text-right;
+
+  margin:  10px 0;
+  padding: 10px;
 }
 
 /*
@@ -173,6 +230,7 @@ a {
   .navbar-brand {
     font-weight: 300;
     font-size: $font-size-base * 2;
+    padding-left: 0;
   }
 }
 
@@ -182,7 +240,7 @@ a {
 .idea-badge {
   $badge-height: 65px;
 
-  background:    lighten($body-bg, 10%);
+  background:    lighten($body-bg-color, 10%);
   min-height:    $badge-height;
   margin-bottom: 5px;
   padding:       5px 15px;
@@ -276,7 +334,7 @@ a {
  * Homepage
  */
 .introduction-banner {
-  background-color: $brand-primary;
+  background-color: $brand-primary-color;
 
   .introduction-banner-content {
     padding: 120px 40px 40px 40px;
@@ -289,15 +347,15 @@ a {
   }
 
   .user-callout {
-    $border-color: darken($brand-primary, 12%);
-    $highlight-color: lighten($body-bg, 6%);
+    $border-color: darken($brand-primary-color, 12%);
+    $highlight-color: lighten($body-bg-color, 6%);
 
     border-top: 1px dotted $border-color;
     margin-top: 20px;
     padding-top: 20px;
 
     .btn {
-      background: $body-bg;
+      background: $body-bg-color;
 
       font-weight: 300;
       font-size: $font-size-base * 1.2;
