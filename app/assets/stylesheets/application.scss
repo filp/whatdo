@@ -346,6 +346,12 @@ label {
     color: $text-dim-color;
   }
 }
+
+// Links to 'Forgot Password' and related
+.user-session-links {
+  font-size: $font-size-base * .8;
+}
+
 /*
  * Homepage
  */
