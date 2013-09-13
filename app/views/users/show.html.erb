@@ -5,7 +5,7 @@
   <div class="col-sm-3">
     <div class="user-badge">
       <div class="user-avatar">
-        <%= link_to is_current_user?(@user) ? "http://gravatar.com/emails" : user_path(@user) do %>
+        <%= link_to @user do %>
           <%= gravatar_for @user, size: 160, class: "img-circle" %> 
         <% end %>
       </div>
