@@ -2,22 +2,19 @@
 
 <h1>Share a new Idea:</h1>
 
-<%= form_for(@idea, html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <div class="form-group">
-    <%= f.label :title, "The title of your idea:" %>
-    <%= f.text_field :title %>
-  </div>
+<%= simple_form_for(@idea) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :title, label: "Title of your idea:" %>
+    <%= f.input :body,  label: "Description of your idea:", required: true,
+                input_html: { rows: 6 } %>
 
-  <div class="form-group">
-    <%= f.label :body, "A longer description for your idea:" %>
-    <%= f.text_area :body %>
     <small>
       <%= link_to "Markdown", "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" %>
       is accepted!
     </small>
   </div>
 
-  <div class="form-group">
+  <div class="form-inputs">
     <%= f.submit "Share this idea!", class: "btn btn-primary" %>
   </div>
 <% end %>
