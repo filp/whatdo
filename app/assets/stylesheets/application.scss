@@ -160,6 +160,22 @@ a {
   font-weight: bold;
 }
 
+.social-badge {
+  $badge-diameter: 40px;
+
+  display: inline-block;
+  width:  $badge-diameter;
+  height: $badge-diameter;
+
+  background: $brand-primary-color;
+  color: $text-light-color;
+
+  border-radius: 180px;
+  text-align: center;
+
+  padding-top: 8px;
+}
+
 /*
  * Buttons
  */

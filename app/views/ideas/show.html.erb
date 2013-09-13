@@ -5,6 +5,10 @@
   <p>
     <small>An idea by <strong><%= link_to @idea.user.name, user_path(@idea.user) %></strong></small>
   </p>
+
+  <%= link_to_share_to_twitter "#{@idea.title} by #{@idea.user.name} #{idea_url(@idea)}", class: "social-badge", title: "Tweet this idea" do %>
+    <i class="icon-large icon-twitter"></i>
+  <% end %>
 </div>
 <div class="idea-body document">
   <% unless @idea.body.empty? %>

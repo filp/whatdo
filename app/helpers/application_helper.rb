@@ -15,4 +15,15 @@ module ApplicationHelper
       gravatar: { size: options[:size] || 32, default: :identicon }
     )
   end
+
+  # Helper for building share-to-twitter links
+  # http://twitter.com/home?status=<msg>
+  def link_to_share_to_twitter(message, options={}, &block)
+    options[:class] = "twitter-link #{options[:class]}"
+
+    message = URI.encode(message)
+    link    = "http://twitter.com/home?status=#{message}"
+
+    send(:link_to, link, options, &block)
+  end
 end
