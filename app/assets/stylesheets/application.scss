@@ -292,6 +292,35 @@ label {
     margin-bottom: 0;
   }
 
+  // Tag ideas that belong to the signed-in user so they're easier
+  // to pick out on a list:
+  &.idea-belongs-to-self {
+    border-left: 3px solid $brand-primary;
+
+    @media(min-width: $container-desktop) {
+      &:before {
+        #content: attr(data-own-idea-label);
+
+        float: left;
+        position: absolute;
+        margin-left: -60px;
+
+        font-size: $font-size-base * .7;
+        background: $brand-primary-color;
+        content: "your idea!";
+        padding: 4px 6px;
+        border-radius: 3px;
+
+        text-shadow: 1px 1px 0 $shadow-hard-color;
+
+        // I am severely under-using sass...
+        -webkit-box-shadow: 1px 1px 0 $shadow-soft-color;
+        -moz-box-shadow: 1px 1px 0 $shadow-soft-color;
+        box-shadow: 1px 1px 0 $shadow-soft-color;
+      }
+    }
+  }
+
   .idea-votes {
     background: $shadow-soft-color;
     width:  40px;

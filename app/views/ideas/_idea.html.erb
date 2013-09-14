@@ -1,7 +1,7 @@
 <% include_author = true if local_assigns[:include_author].nil? %>
 
-<div class="idea-badge">
-  <div class="idea-votes pull-left <%= user_signed_in? && current_user.voted_for?(idea) ? 'user-has-voted' : '' %>">
+<div class="idea-badge <%= 'idea-belongs-to-self' if user_signed_in? && idea.user == current_user %>">
+  <div class="idea-votes pull-left <%= 'user-has-voted' if user_signed_in? && current_user.voted_for?(idea) %>">
     <span class="js-idea-votes-count" data-idea-id="<%= idea.id %>"><%= idea.votes.size %></span>
   </div>
   <div class="idea-details">
