@@ -1,43 +1,59 @@
 <% content_for :page_title, "#{@idea.title} by #{@idea.user.name}" %>
 
-<div class="idea-badge">
-  <h2><%= @idea.title %></h2>
-  <p>
-    <small>An idea by <strong><%= link_to @idea.user.name, user_path(@idea.user) %></strong></small>
-  </p>
+<div class="idea">
+  <header class="idea-header">
+    <%= render @idea %>
+  </header>
 
-  <%= link_to_share_to_twitter "#{@idea.title} by #{@idea.user.name} #{idea_url(@idea)}", class: "social-badge", title: "Tweet this idea" do %>
-    <i class="icon-large icon-twitter"></i>
-  <% end %>
-</div>
-<div class="idea-body document">
-  <% unless @idea.body.empty? %>
-    <%= sanitize UnsafeMarkdownPresenter.to_html(@idea.body) %>
-  <% else %>
-    <em>No description given :(</em>
-  <% end %>
-</div>
-<div class="idea-likes">
-  <p>
-    This idea has received <span class="badge badge-info js-vote-count"><%= @idea.votes.size %></span> votes.
+  <div class="row">
 
-    <% if user_signed_in? %>
-      <% unless @idea.user == current_user %>
-        <% if current_user.voted_for?(@idea) %>
-          <strong>You already voted for this idea, cheers!</strong>
+    <%# Idea body/markdown content: %>
+    <div class="col-md-8">
+      <div class="idea-document">
+        <% unless @idea.body.empty? %>
+          <%= sanitize UnsafeMarkdownPresenter.to_html(@idea.body) %>
         <% else %>
-          <%= link_to "Vote for this idea!", vote_idea_path(@idea), 
-              method: :put, remote: true, class: "btn btn-primary js-vote-callout" %>
+          <em>No description given :(</em>
         <% end %>
-      <% end %>
-    <% else %>
-      <%= link_to "Sign In to vote for this idea.", new_user_session_path %>
-    <% end %>
-  </p>
-  
-  <% if @idea.voters.any? %>
-    <div class="voters well">
-      <%= render partial: "users/tiny_badge", collection: @idea.voters, as: :user %>
+      </div>
     </div>
-  <% end %>
+
+    <%# Sidebar %>
+    <div class="col-md-4">
+
+      <div class="idea-actions">
+        <h4 class="section-title">Share</h4>       
+        <ul class="idea-social-actions list-inline">
+          <%= link_to_share_to_twitter "#{@idea.title} by #{@idea.user.name} @ whatdo: #{idea_url(@idea)}",
+              class: "social-badge twitter-social-badge", title: "Tweet this idea" do %>
+            <i class="icon-twitter icon-large"></i>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="idea-likes">
+        <p>
+          <% if user_signed_in? %>
+            <% unless @idea.user == current_user %>
+              <% if current_user.voted_for?(@idea) %>
+                <strong>You already voted for this idea, cheers!</strong>
+              <% else %>
+                <%= link_to "Vote for this idea!", vote_idea_path(@idea), 
+                    method: :put, remote: true, class: "btn btn-primary js-vote-callout" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to "Sign In to vote for this idea.", new_user_session_path %>
+          <% end %>
+        </p>
+        
+        <% if @idea.voters.any? %>
+          <div class="voters well">
+            <%= render partial: "users/tiny_badge", collection: @idea.voters, as: :user %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
 </div>

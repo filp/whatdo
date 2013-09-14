@@ -149,6 +149,18 @@ a {
 }
 
 /*
+ * Misc. components
+ */
+.section-title {
+  color: $text-dim-color;
+  font-weight: 300;
+  border-bottom: 1px dotted $brand-primary-soft-color;
+  
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+}
+
+/*
  * Labels, badges, tags, etc
  */
 
@@ -174,6 +186,15 @@ a {
   text-align: center;
 
   padding-top: 8px;
+
+  &.twitter-social-badge {
+    background-color: #00acee; // twitter blue, brandcolors.net
+  }
+
+  &:hover {
+    color: inherit;
+    background: $shadow-hard-color;
+  }
 }
 
 /*
@@ -313,13 +334,34 @@ label {
   }
 }
 
-.document {
-  padding: 20px;
-  border: 1px solid $text-dim-color;
-  margin: 20px 0;
+.idea {
+  .idea-header {
+    margin-bottom: 20px;
 
-  background: white;
-  color: black;
+    .idea-title {
+      font-size: $font-size-base * 3;
+    }
+
+    .idea-details {
+      padding-left: 10px;
+      margin-left:  55px;
+      border-left: 1px solid $shadow-soft-color;
+    }
+  }
+
+  .idea-actions {
+    .idea-social-actions {
+      padding: 5px 0;
+    }
+  }
+
+  // Markdown document:
+  .idea-document {
+    padding:    20px;
+    background: darken($body-bg-color, 6%);
+
+    min-height: 160px;
+  }
 }
 
 /*
