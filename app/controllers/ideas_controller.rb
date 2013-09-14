@@ -1,8 +1,18 @@
 class IdeasController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
+  # Allow filtering ideas in a list by a user id:
+  has_scope :by_user
+
   def index
-    @ideas = Idea.includes(:user, :votes).order("created_at DESC").paginate(page: params[:page], per_page: 10)
+    @ideas  = apply_scopes(Idea)
+      .includes(:user, :votes)
+      .order("created_at DESC")
+      .paginate(page: params[:page], per_page: 10)
+
+    # to-do: #current_scopes can be used to get a list
+    # of scopes being used in the index - might be neat
+    # to allow toggling these
   end
 
   def show

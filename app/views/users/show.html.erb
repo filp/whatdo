@@ -26,7 +26,7 @@
 
         <div class="user-ideas-callout">
           <p>
-            <small><%= link_to "View all ideas shared by #{@user.name}", "#" %></small>
+            <small><%= link_to "View all ideas shared by #{@user.name}", ideas_path(by_user: @user.id) %></small>
           </p>
         </div>
       </div>

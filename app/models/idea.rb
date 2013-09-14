@@ -4,6 +4,8 @@ class Idea < ActiveRecord::Base
 
   validates :title, presence: true, length: { minimum: 3, maximum: 128 }
   validates :body, length: { maximum: 12000 }
+  
+  scope :by_user, -> id { where(user_id: id.to_i ) }
 
   # @return [Array] A list of Users that voted for this idea
   def voters
