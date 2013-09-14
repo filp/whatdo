@@ -16,4 +16,10 @@ class Idea < ActiveRecord::Base
   def total_votes
     votes.size
   end
+
+  # Does this idea belong to the passed user?
+  # @param [User] user
+  def belongs_to_user?(user)
+    self.user == user
+  end
 end
