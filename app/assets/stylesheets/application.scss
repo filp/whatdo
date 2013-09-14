@@ -134,6 +134,12 @@ a {
   }
 }
 
+code {
+  background: $shadow-soft-color;
+  color: $text-dim-color;
+  font-size: 90%;
+}
+
 .well {
   background:    $panel-bg;
   border-radius: $panel-border-radius;
@@ -359,8 +365,18 @@ label {
   .idea-document {
     padding:    20px;
     background: darken($body-bg-color, 6%);
-
     min-height: 160px;
+    max-width: 100%;
+    word-wrap: break-all;
+
+    // Do not allow images to exceed the document's width:
+    img {
+      max-width: 100%;
+    }
+
+    code {
+      white-space: normal;
+    }
   }
 }
 
