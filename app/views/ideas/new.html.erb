@@ -4,8 +4,11 @@
 
 <%= simple_form_for(@idea) do |f| %>
   <div class="form-inputs">
-    <%= f.input :title, label: "Title of your idea:" %>
-    <%= f.input :body,  label: "Description of your idea:", required: true,
+    <div class="well">
+      <%= f.input :title, label: "Title of your idea", input_html: { class: "input-lg" } %>
+    </div>
+
+    <%= f.input :body,  label: "Description of your idea", required: true,
                 input_html: { rows: 6 } %>
 
     <small>

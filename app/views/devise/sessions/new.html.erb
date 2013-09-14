@@ -12,8 +12,8 @@
         </div>
 
         <div class="form-inputs">
-          <%= f.input :email, :required => true, :autofocus => true %>
-          <%= f.input :password, :required => true %>
+          <%= f.input :email, :required => true, :autofocus => true, input_html: { class: "input-lg" } %>
+          <%= f.input :password, :required => true, input_html: { class: "input-lg" } %>
         </div>
 
         <% if devise_mapping.rememberable? %>
