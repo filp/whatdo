@@ -134,6 +134,10 @@ a {
   }
 }
 
+h1, h2 {
+  font-weight: 300;
+}
+
 code {
   background: $shadow-soft-color;
   color: $text-dim-color;
@@ -220,8 +224,15 @@ code {
     border: none;
   }
 
-  &.btn-primary {
-    background: $brand-primary-color;
+  &.btn-muted {
+    background-color: darken($body-bg-color, 6%);
+    color: $text-dim-color;
+    border: 1px solid $shadow-soft-color;
+
+    &:hover {
+      background-color: lighten($body-bg, 6%);
+      border-color: $brand-primary-soft-color;
+    }
   }
 }
 
@@ -434,11 +445,6 @@ label {
   .user-name {
     font-size: $font-size-base * 2.2;
     font-weight: 300;
-    text-align: center;
-  }
-
-  .user-avatar, .user-meta {
-    text-align: center;
   }
 
   .user-meta {
@@ -450,6 +456,12 @@ label {
 // Links to 'Forgot Password' and related
 .user-session-links {
   font-size: $font-size-base * .8;
+}
+
+// User profile actions
+.user-actions {
+  padding: 10px;
+  margin-top: 10px;
 }
 
 /*
