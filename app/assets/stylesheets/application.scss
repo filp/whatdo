@@ -251,6 +251,10 @@ label {
   }
 }
 
+.input-lg {
+  border-radius: $input-border-radius;
+}
+
 .form-actions {
   @extend .well;
   @extend .text-right;
