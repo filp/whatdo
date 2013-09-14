@@ -1,2 +1,3 @@
+// Gotta move this to the interface proper like:
 $(".js-vote-callout").attr("disabled", true);
-$(".js-vote-count").text(<%= @idea.votes.size %>);
+$(".js-idea-votes-count").text(<%= @idea.votes.size %>).parent().addClass("user-has-voted");

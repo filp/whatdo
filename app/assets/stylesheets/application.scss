@@ -302,6 +302,10 @@ label {
     padding-top: 10px;
     font-size: $font-size-base * .8;
     font-weight: bold;
+
+    &.user-has-voted {
+      background-color: $brand-primary-color;
+    }
   }
 
   // Make sure the details (title, etc) are always at least
