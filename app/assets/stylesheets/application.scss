@@ -316,6 +316,8 @@ label {
 .idea-badge {
   $badge-height: 65px;
 
+
+  border-left:   1px solid transparent;
   background:    lighten($body-bg-color, 10%);
   min-height:    $badge-height;
   margin-bottom: 5px;
@@ -328,7 +330,7 @@ label {
   // Tag ideas that belong to the signed-in user so they're easier
   // to pick out on a list:
   &.idea-belongs-to-self {
-    border-left: 3px solid $brand-primary;
+    border-left: 1px solid $brand-primary-color;
 
     @media(min-width: $container-desktop) {
       &:before {
@@ -336,10 +338,13 @@ label {
 
         float: left;
         position: absolute;
-        margin-left: -60px;
+        margin-left: -63px;
 
         font-size: $font-size-base * .7;
-        background: $brand-primary-color;
+
+        border: 1px solid lighten($body-bg, 6%);
+        background: $body-bg;
+
         content: "your idea!";
         padding: 4px 6px;
         border-radius: 3px;
