@@ -1,0 +1,7 @@
+<div class="container">
+  <ul class="flash-messages list-unstyled">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :li, msg, class: "alert alert-#{name}" %>
+    <% end %>
+  </ul>
+</div>

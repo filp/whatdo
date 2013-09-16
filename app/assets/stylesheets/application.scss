@@ -96,6 +96,24 @@ $input-bg-disabled:         $body-bg-color;
   box-shadow: $args;
 }
 
+/*
+ * Include an icon anywhere, by its char code. Only
+ * useful in :before/:after selectors.
+ */
+@mixin behave-like-icon($icon, $font-size: false) {
+  @if $font-size != false {
+    font-size: $font-size;
+  }
+
+  margin-right: 5px;
+  font-family: "FontAwesome";
+  font-weight: normal;
+  font-style:  normal;
+  -webkit-font-smoothing: antialiased;
+
+  content: $icon;
+}
+
 a {
   color: $link-color;
   &:hover {
@@ -137,6 +155,26 @@ a {
 
     left: 0;
     top: 0;
+  }
+}
+
+
+/*
+ * Alerts and notifications
+ */
+.alert {
+  border-radius: 0;
+  border: 1px solid $shadow-soft-color;
+  background: darken($body-bg, 6%);
+
+  &:before {
+    @include behave-like-icon("\f0a1", $font-size-base * 1.1);
+    color: $shadow-hard-color;
+    margin-right: 10px;
+  }
+
+  &.alert-alert, &.alert-error {
+    background: #DD2B2B;
   }
 }
 
@@ -304,6 +342,22 @@ label {
 
   margin:  10px 0;
   padding: 10px;
+}
+
+// SimpleForm helpers and stuff:
+.help-block, .help-inline {
+  display: block;
+
+  font-size: $font-size-base * .8;
+  padding: 6px;
+  color: $text-dim-color;
+  background: $shadow-soft-color;
+  border-left: 2px solid $shadow-soft-color;
+  margin: 0 0 5px 0;
+
+  &:before {
+    @include behave-like-icon("\f0eb");
+  }
 }
 
 /*

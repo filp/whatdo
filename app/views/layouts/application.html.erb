@@ -16,6 +16,7 @@
   <body class="application">
     <%= render "shared/report_issues" %>
     <%= render "shared/navbar" %>
+    <%= render "shared/flashes" unless flash.empty? %>
     
     <% if content_for?(:dont_wrap_content) %>
       <%= yield %>
