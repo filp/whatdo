@@ -9,7 +9,7 @@
  */
 
 // Base and helper colors:
-$brand-primary-color:   #17C1BF;
+$brand-primary-color:   #2FB8D8;
 $brand-secondary-color: #D9072D;
 
 // bootstrap compat:
@@ -19,7 +19,7 @@ $brand-secondary: $brand-secondary-color;
 // Brand color variations:
 $brand-primary-soft-color: hsl(hue($brand-primary-color), 50%, 30%);
 
-$body-bg-color:         #242E2F;
+$body-bg-color:         #2F3639;
 $body-bg:               $body-bg-color; // bootstrap compat.
 
 $text-dim-color:        #BDBDBD;
