@@ -3,6 +3,38 @@
 <div class="idea">
   <header class="idea-header">
     <%= render @idea %>
+
+    <div class="row idea-vote-details">
+      <div class="col-sm-3">
+        <%# Todo: Move this elsewhere, it's too messy %>
+        <div class="idea-vote-callout">
+          <% if user_signed_in? %>
+            <% if @idea.user != current_user %>
+              <%= link_to vote_idea_path(@idea), method: :put, remote: true,
+                  class: "btn btn-primary js-vote-callout",
+                  # Disable the vote button if the user already voted:
+                  disabled: current_user.voted_for?(@idea) do %>
+                  <i class="icon-thumbs-up-alt"></i> Like this idea
+              <% end %>
+            <% else %>
+              <span class="text-muted">You can't vote for your own ideas.</span>
+            <% end %>
+          <% else %>
+            <%= link_to "Sign In to vote for this idea.", new_user_session_path %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="idea-likes">
+          <% if @idea.voters.any? %>
+            <%= render partial: "users/tiny_badge", collection: @idea.voters, as: :user %>
+          <% else %>
+            <span class="text-muted">This idea hasn't received any votes yet!</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </header>
 
   <div class="row">
@@ -48,30 +80,6 @@
           </ul>
         </section>
       </div>
-
-      <div class="idea-likes">
-        <p>
-          <% if user_signed_in? %>
-            <% unless @idea.user == current_user %>
-              <% if current_user.voted_for?(@idea) %>
-                <strong>You already voted for this idea, cheers!</strong>
-              <% else %>
-                <%= link_to "Vote for this idea!", vote_idea_path(@idea), 
-                    method: :put, remote: true, class: "btn btn-primary js-vote-callout" %>
-              <% end %>
-            <% end %>
-          <% else %>
-            <%= link_to "Sign In to vote for this idea.", new_user_session_path %>
-          <% end %>
-        </p>
-        
-        <% if @idea.voters.any? %>
-          <div class="voters well">
-            <%= render partial: "users/tiny_badge", collection: @idea.voters, as: :user %>
-          </div>
-        <% end %>
-      </div>
     </div>
-
   </div>
 </div>

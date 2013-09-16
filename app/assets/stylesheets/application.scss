@@ -413,7 +413,9 @@ label {
 
 .idea {
   .idea-header {
-    margin-bottom: 20px;
+    .idea-badge {
+      margin-bottom: 0;
+    }
 
     .idea-title {
       font-size: $font-size-base * 3;
@@ -424,6 +426,12 @@ label {
       margin-left:  55px;
       border-left: 1px solid $shadow-soft-color;
     }
+  }
+
+  .idea-vote-details {
+    background: $shadow-soft-color;
+    padding: 20px 10px;
+    margin: 0 0 20px 0;
   }
 
   .idea-actions {
