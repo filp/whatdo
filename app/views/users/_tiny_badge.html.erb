@@ -1,3 +1,3 @@
-<%= link_to user_path(user), title: user.name do %>
-  <%= gravatar_for user, size: 32 %>
+<%= link_to user_path(user), title: user.name, class: "user-tiny-badge #{'user-is-self' if is_current_user?(user)}" do %>
+  <%= gravatar_for user, size: 36, class: "img-circle" %>
 <% end %>

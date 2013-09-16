@@ -14,7 +14,7 @@
                   class: "btn btn-primary js-vote-callout",
                   # Disable the vote button if the user already voted:
                   disabled: current_user.voted_for?(@idea) do %>
-                  <i class="icon-thumbs-up-alt"></i> Like this idea
+                  <i class="icon-thumbs-up-alt"></i> Vote for this Idea
               <% end %>
             <% else %>
               <span class="text-muted">You can't vote for your own ideas.</span>
@@ -26,9 +26,13 @@
       </div>
 
       <div class="col-sm-9">
-        <div class="idea-likes">
+        <div class="idea-votes">
+
           <% if @idea.voters.any? %>
-            <%= render partial: "users/tiny_badge", collection: @idea.voters, as: :user %>
+            <%# Show a list of tiny badges for some of the voters for this idea %>
+            <% max_voter_badges = 10 %>
+
+            <%= render partial: "users/tiny_badge", collection: @idea.voters.last(max_voter_badges), as: :user %>
           <% else %>
             <span class="text-muted">This idea hasn't received any votes yet!</span>
           <% end %>

@@ -434,6 +434,16 @@ label {
     margin: 0 0 20px 0;
   }
 
+  // For smaller displays, structure the votes section a
+  // bit better so it isn't as confusing:
+  @media(max-width: $container-tablet) {
+    .idea-votes {
+      border-top:  1px solid $shadow-soft-color;
+      padding-top: 10px;
+      margin-top:  10px;
+    }
+  }
+
   .idea-actions {
     .idea-social-actions {
       padding: 5px 0;
@@ -488,6 +498,17 @@ label {
 .user-actions {
   padding: 10px;
   margin-top: 10px;
+}
+
+.user-tiny-badge {
+  .gravatar {
+    border: 3px solid $shadow-soft-color;
+  }
+
+  // Highlight the tiny badge if the user is looking at him/herself:
+  &.user-is-self {
+    .gravatar { border-color: $brand-primary-color; }
+  }
 }
 
 /*
