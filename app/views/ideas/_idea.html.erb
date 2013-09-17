@@ -1,8 +1,15 @@
-<% include_author = true if local_assigns[:include_author].nil? %>
+<% include_author       = true if local_assigns[:include_author].nil?
+   this_belongs_to_self = user_signed_in? && idea.belongs_to_user?(current_user)
+   self_voted_for_this  = user_signed_in? && current_user.voted_for?(idea) %>
 
-<div class="idea-badge <%= 'idea-belongs-to-self' if user_signed_in? && idea.belongs_to_user?(current_user) %>">
-  <div class="idea-votes pull-left <%= 'user-has-voted' if user_signed_in? && current_user.voted_for?(idea) %>">
-    <span class="js-idea-votes-count" data-idea-id="<%= idea.id %>"><%= idea.total_votes %></span>
+<div class="idea-badge <%= 'idea-belongs-to-self' if this_belongs_to_self %>">
+  <div class="idea-votes pull-left <%= 'user-has-voted' if self_voted_for_this %>">
+    <div class="js-idea-votes-count" data-idea-id="<%= idea.id %>"><%= idea.total_votes %></div>
+    <% unless this_belongs_to_self %>
+      <div class="idea-vote-control">
+
+      </div>
+    <% end %>
   </div>
   <div class="idea-details">
     <h4 class="idea-title"><%= link_to idea.title, idea %></h4>
